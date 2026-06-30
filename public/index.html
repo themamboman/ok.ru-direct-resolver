@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OK.RU Stream Resolver</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <h1>OK.RU Stream Resolver</h1>
+      <p>Resolve ok.ru video IDs to HLS streams with real quality levels.</p>
+    </header>
+
+    <section class="panel">
+      <form id="resolve-form">
+        <label for="video-id-input">Video ID or URL</label>
+        <div class="input-row">
+          <input
+            id="video-id-input"
+            type="text"
+            placeholder="12226347272789"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          >
+          <button id="submit-btn" type="submit">Resolve</button>
+        </div>
+      </form>
+      <div id="status" class="status"></div>
+      <div id="timers" class="timers" hidden>
+        <div class="timer">
+          <span class="timer-label">Resolve time</span>
+          <span id="resolve-time" class="timer-value">—</span>
+        </div>
+        <div class="timer">
+          <span class="timer-label">Playback start</span>
+          <span id="play-time" class="timer-value">—</span>
+        </div>
+      </div>
+      <div id="result-section" hidden>
+        <h2 class="result-title">Result</h2>
+        <div class="links">
+          <div class="link-row">
+            <span class="link-label">Stream URL</span>
+            <div class="link-field">
+              <code id="direct-link" class="link-url"></code>
+              <button type="button" class="copy-btn" data-copy-target="direct-link">Copy</button>
+            </div>
+          </div>
+          <div class="link-row">
+            <span class="link-label">Proxy URL</span>
+            <div class="link-field">
+              <code id="proxy-link" class="link-url"></code>
+              <button type="button" class="copy-btn" data-copy-target="proxy-link">Copy</button>
+            </div>
+          </div>
+        </div>
+        <p class="link-hint">Stream URL is the HLS variant for the selected quality. Proxy URL is for test playback here.</p>
+        <div id="qualities" class="quality-switch" hidden></div>
+        <div id="meta"></div>
+        <h3 class="preview-title">Test playback</h3>
+        <video id="video" controls playsinline preload="auto" autoplay></video>
+      </div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

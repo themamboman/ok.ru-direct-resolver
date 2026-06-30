@@ -1,0 +1,7 @@
+{
+  "name": "ok-ru-direct-resolver",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server/index.js"
+  }
+}
